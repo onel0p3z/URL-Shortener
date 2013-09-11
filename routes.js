@@ -4,9 +4,14 @@ var _ = require('lodash'),
 
 module.exports = function(app){
     app.get('/', function(req, res){
-        res.json({
-            'hello': 'app',
-            'World': 'koding'
+        Url.find().exec(function(err, docs){
+            console.log('doc: ', docs);
+            if(err){ 
+                console.log(err);
+                throw new Error;
+            } else if(docs){
+                res.json({ 'docs': docs });
+            };
         });
     });
 
