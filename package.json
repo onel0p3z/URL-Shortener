@@ -10,7 +10,8 @@
     "express": "*",
     "lodash": "*",
     "mongoose": "*",
-    "connect-mongo": "*"
+    "connect-mongo": "*",
+    "path": "*"
   },
   "repository": {
     "type": "git",

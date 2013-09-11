@@ -6,6 +6,7 @@ var express = require('express')
     , _ = require('lodash')
     , app = express()
     , routes = require('./routes')
+    , path = require('path')
     ;
 
 db.on('error', function(err){
@@ -13,6 +14,9 @@ db.on('error', function(err){
 });
 
 app.configure(function(){
+    app.set('port', process.env.PORT || 3000);
+    app.set('views', path.join(__dirname + '/views'));
+    app.set('view engine', 'jade');
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.cookieParser());
@@ -25,12 +29,14 @@ app.configure(function(){
             collection: 'sessions'
         })
     }));
+    app.use(app.router);
+    app.use(express.static(path.join(__dirname, 'public')));
     //app.use(express.cookieSession());
     //app.use(express.csrf());
 });
 
 routes(app);
 
-app.listen(8080, function(){
-    console.log('Server started at 8080 ...');
+app.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
 });
