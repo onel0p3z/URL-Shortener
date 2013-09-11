@@ -1,18 +1,24 @@
 {
-    "name": "shortener",
-    "version": "0.0.0",
-    "description": "A simple and small personal URL Shortener",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "dependencies": {
-        "express": "*",
-        "lodash": "*",
-        "mongoose": "*",
-        "connect-mongo": "*"
-    },
-    "repository": "",
-    "author": "@onel0p3z - Juan Lopez",
-    "license": "MIT"
+  "name": "URL_Shortener",
+  "version": "0.0.0",
+  "description": "A simple and small personal URL Shortener",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "lodash": "*",
+    "mongoose": "*",
+    "connect-mongo": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onel0p3z/URL-Shortener"
+  },
+  "author": "@onel0p3z - Juan Lopez",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "e1a3effbb5ed325be14999b9d6e7d2835fd58dd8",
+  "devDependencies": {}
 }
