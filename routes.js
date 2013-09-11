@@ -1,3 +1,7 @@
+var _ = require('lodash'), 
+    Url = require('./utils').Url,
+    getShort = require('./utils').string;
+
 module.exports = function(app){
     app.get('/', function(req, res){
         res.json({
@@ -29,8 +33,16 @@ module.exports = function(app){
         var url = _.escape(req.body.url),
         user = req.body.user,
         short = getShort();
-        console.log('1', short);
-
+        //console.log('1', short);
+        
+        /*
+        TODO: Check if URL to shorten is already in
+        Url.find({ 'url': url }).lean().exec(function(err, doc){
+            if(err){ console.log(err); throw New Error }
+            else{ res.end('url already exists!'); };
+        });
+        */
+        
         Url.findOne({ '_id': short }).lean().exec(function(err, doc){
             console.log('doc: ', doc);
             if(err){ 

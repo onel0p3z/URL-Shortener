@@ -1,39 +1,16 @@
 var express = require('express')
-    , mongoStore = require('connect-mongo')(express)
     , db = require('./utils').db
-    , Url = require('./utils').Url
-    , getShort = require('./utils').string
-    , _ = require('lodash')
+    , expConfig = require('./utils').express
     , app = express()
     , routes = require('./routes')
-    , path = require('path')
     ;
 
 db.on('error', function(err){
     console.log('db error ...', err);
 });
 
-app.configure(function(){
-    app.set('port', process.env.PORT || 3000);
-    app.set('views', path.join(__dirname + '/views'));
-    app.set('view engine', 'jade');
-    app.use(express.favicon());
-    app.use(express.logger('dev'));
-    app.use(express.cookieParser());
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(express.session({
-        secret: 'MEAN',
-        store: new mongoStore({
-            url: 'mongodb://localhost/shortener',
-            collection: 'sessions'
-        })
-    }));
-    app.use(app.router);
-    app.use(express.static(path.join(__dirname, 'public')));
-    //app.use(express.cookieSession());
-    //app.use(express.csrf());
-});
+// Express Config
+expConfig(app);
 
 routes(app);
 
