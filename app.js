@@ -1,9 +1,8 @@
-var express = require('express')
-    , db = require('./utils').db
-    , expConfig = require('./utils').express
-    , app = express()
-    , routes = require('./routes')
-    ;
+var express = require('express'),
+    db = require('./utils').db,
+    expConfig = require('./utils').express,
+    app = express(), 
+    routes = require('./routes');
 
 db.on('error', function(err){
     console.log('db error ...', err);

@@ -1,9 +1,12 @@
+// TODO: 
+// * Modularize DB Connection (class??)
+// * Modularize config into config/db config/express etc.
+
 var mongoose = require('mongoose'),
     express = require('express'),
     mongoStore = require('connect-mongo')(express),
     path = require('path');
 
-//mongoose.connect('mongodb://koding:kC8wxQX2j41DBAi@ds037097.mongolab.com:37097/koding');
 mongoose.connect('mongodb://localhost/shortener');
 
 var urlSchema = new mongoose.Schema(
@@ -28,7 +31,7 @@ exports.string = function(){
     for(var i = 0; i < length; i++){
         var p = Math.floor(Math.random() * set.length);
         url += set[p];
-    };
+    }
 
     return url;
 };
